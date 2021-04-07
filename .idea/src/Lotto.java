@@ -76,5 +76,16 @@ public class Lotto {
         loopFromArray(lottoNumbers);
     }
 
+    private boolean numberExistInArray(int[] firstArray, int[] secondArray) {
+        for (int i = 0; i < HOW_MANY_NUMBERS; i++) {
+
+            for (int j = 0; j < HOW_MANY_NUMBERS; j++) {
+                if (firstArray[i] == secondArray[i]) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
 }
