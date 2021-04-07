@@ -31,13 +31,13 @@ public class Lotto {
 
 
             for (int j = 0; j < HOW_MANY_NUMBERS; j++) {
-                if (numberExistInArray(i, j)) {
+                if (isnumberExistInArray(i, j)) {
                     i--;
                     System.out.println("Ta liczba została już wybrana, podaj nową");
                 }
             }
-            if (this.givenNumbers[i] < 1 || this.givenNumbers > 46) {
-                System.out.println("Liczba powinna być z zakresu 1 do 46");
+            if (this.givenNumbers[i] < 1 || this.givenNumbers[i] > 46) {
+                System.out.println("Liczba powinna być z zakresu od 1 do 46");
                 i--;
             } else {
                 System.out.println("OK");
@@ -48,13 +48,20 @@ public class Lotto {
 
     }
 
+    private boolean isnumberExistInArray(int i, int j) {
+        if (this.givenNumbers[i] == this.givenNumbers[j] && i == j) {
+            return true;
+        }
+        return false;
+    }
+
 
     public void randomNumbers() {
 
         for (int i = 0; i < HOW_MANY_NUMBERS; i++) {
             this.randomNumbers[i] = generator.nextInt(46);
             for (int j = 0; j < HOW_MANY_NUMBERS; j++) {
-                if (numberExistInArray(i, j)) {
+                if (isnumberExistInArray(i, j)) {
                     i--;
                 }
             }
@@ -76,16 +83,15 @@ public class Lotto {
         loopFromArray(lottoNumbers);
     }
 
-    private boolean numberExistInArray(int[] firstArray, int[] secondArray) {
+
+    public void winOrLoose(int[] givenNumbers, int[] lottoNumbers){
         for (int i = 0; i < HOW_MANY_NUMBERS; i++) {
 
             for (int j = 0; j < HOW_MANY_NUMBERS; j++) {
-                if (firstArray[i] == secondArray[i]) {
-                    return true;
+                if (givenNumbers[i] == lottoNumbers[i]){
+                    match ++;
                 }
             }
         }
-        return false;
     }
-
 }
