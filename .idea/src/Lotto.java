@@ -10,6 +10,8 @@ public class Lotto {
     Random generator = new Random();
     int match = 0;
 
+
+
     public Lotto(int[] givenNumbers, int[] randomNumbers, Random generator, int match) {
         this.givenNumbers = givenNumbers;
         this.randomNumbers = randomNumbers;
@@ -17,7 +19,8 @@ public class Lotto {
         this.match = match;
     }
 
-    public void giveNumbers() {
+
+    public int[] giveNumbers() {
         System.out.println("Podaj 6 różnych licz z przedziału 1 - 46");
         Scanner scanner = new Scanner(System.in);
 
@@ -45,7 +48,7 @@ public class Lotto {
             scanner.close();
 
         }
-
+        return givenNumbers;
     }
 
     private boolean isnumberExistInArray(int i, int j) {
@@ -69,7 +72,7 @@ public class Lotto {
 
     }
 
-    public void loopFromArray(int[] array) {
+    private void loopFromArray(int[] array) {
         for (int i = 0; i < HOW_MANY_NUMBERS; i++) {
             System.out.println(array[i]);
         }
